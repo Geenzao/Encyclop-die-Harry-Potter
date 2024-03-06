@@ -2,9 +2,7 @@
 </script>
 
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-  </div>
+  <h1><slot>Fallback content</slot></h1>
 </template>
 
 
