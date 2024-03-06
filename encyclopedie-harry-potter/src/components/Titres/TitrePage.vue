@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <h1><slot>Fallback content</slot></h1>
+  <h2><slot>Fallback content</slot></h2>
 </template>
 
 

@@ -3,7 +3,7 @@
 
 <template>
     <div>
-        <h1>Sorts Page</h1>
+        <h1>Sorts</h1>
         <!-- Add your content here -->
     </div>
 </template>

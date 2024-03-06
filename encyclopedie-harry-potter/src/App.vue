@@ -9,9 +9,10 @@
 </script>
 
 <template>
-    <SommaireComp/>
+  <h1>Encyclopédie Harry Potter</h1>
+  <SommaireComp/>
 
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
 
 
