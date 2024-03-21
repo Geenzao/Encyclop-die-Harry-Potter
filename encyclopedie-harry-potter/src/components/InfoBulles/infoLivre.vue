@@ -25,7 +25,7 @@ export default {
         </div>
         <br>
         <div>
-            <p class="description">Description:</p><p> {{livre.datePubli}}</p>
+            <p class="datePublication">Date de publication: {{livre.datePubli}}</p>
         </div>
     </div>
 </template>
