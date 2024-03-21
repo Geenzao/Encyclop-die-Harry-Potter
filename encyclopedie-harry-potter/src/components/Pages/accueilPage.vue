@@ -22,7 +22,7 @@
         <p>Vous trouverez ici toutes les informations sur l'univers de Harry Potter tels que les personnages, les livres, les sort ainsi que toutes les potions.</p><br>
         <p>Voici toutes les catégories disponnibles :</p><br>
         <div class="case-pages-container">
-            <router-link to="/livres" class="router-link"><CasePage :image="require('../../Images/livre.jpg')" description="Vous trouverez ici tout les livres de l'univers d'Harry Potter." /></router-link>
+            <router-link to="/livres" class="router-link"><CasePage :image="require('../../Images/livre.png')" description="Vous trouverez ici tout les livres de l'univers d'Harry Potter." /></router-link>
             <router-link to="/personnages" class="router-link"><CasePage :image="require('../../Images/personnages.jpg')" description="Vous trouverez ici tout les personnages de l'univers d'Harry Potter." /></router-link>
             <router-link to="/potions" class="router-link"><CasePage :image="require('../../Images/potion.png')" description="Vous trouverez ici toute les potions de l'univers d'Harry Potter." /></router-link>
             <router-link to="/sorts" class="router-link"><CasePage :image="require('../../Images/sort.png')" description="Vous trouverez ici tout les sorts de l'univers d'Harry Potter." /></router-link>
