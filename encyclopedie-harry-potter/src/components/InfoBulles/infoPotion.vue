@@ -11,15 +11,15 @@ export default {
 
 <template>
     <!-- La div qui représente l'infobulle de la potion -->
-    <div>
+    <a :href="potion.lienPotion"><div>
         <!-- Image de la potion-->
         <div>
-            <img :src= "livre.imageLivre" alt="Image représentant le sort">
+            <img :src= "potion.imagePotion" alt="Image représentant la potion">
         </div>
         <div>
-            
+            <p>{{potion.nomPotion}} </p>
         </div>
-    </div>
+    </div></a>
 </template>
 
 <style scoped>

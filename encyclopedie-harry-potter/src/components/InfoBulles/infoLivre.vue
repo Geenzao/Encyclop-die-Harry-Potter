@@ -23,7 +23,7 @@ export default {
             <p>Auteur: {{livre.auteur}}</p>
         </div>
         <div>
-            <p>Description: {{livre.datePubli}}</p>
+            <p>Date de publication: {{livre.datePubli}}</p>
         </div>
     </div>
 </template>

@@ -1,5 +1,15 @@
 <script>
-import infoLivre from '../InfoBulles/infoLivre.vue'; // Importez votre composant SortInfo
+import infoLivre from '../InfoBulles/infoLivre.vue';
+
+/*const axios = require('axios')
+var stringRequeteInformation = "https://api.potterdb.com/v1/books";
+axios({
+        method: 'get',
+        url: stringRequeteInformation,
+        responseType: 'json'
+    }).then(function (response) {
+        console.log(response.data)
+})*/
 
 export default {
     components: {
@@ -20,7 +30,7 @@ export default {
 
 <template>
     <div>
-        <h1>Sorts de l'univers "Harry Potter"</h1>
+        <h1>Livres de l'univers "Harry Potter"</h1>
         <infoLivre :livre="monLivre"></infoLivre>
     </div>
 </template>
