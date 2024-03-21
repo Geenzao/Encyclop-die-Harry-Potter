@@ -1,11 +1,11 @@
 <template>
-    <div class="popup">
-      <img :src="image" alt="Image" />
-      <p>{{ description }}</p>
-    </div>
-  </template>
+  <div class="popup">
+    <img :src="image" alt="Image" />
+    <p>{{ description }}</p>
+  </div>
+</template>
   
-  <script>
+<script>
   export default {
     name: 'CasePage',
     props: {
@@ -16,8 +16,7 @@
       console.log('Texte de l\'image:', this.image);
     }
   }
-  
-  </script>
+</script>
   
   <style scoped>
   .popup {

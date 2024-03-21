@@ -5,6 +5,8 @@
 </script>
 
 <template>
+  <div class="sommaireVue">
+    <h1>Encyclopédie Harry Potter</h1>
     <div class="sommaire">
       <ul class="sommaire-list">
         <li><router-link to="/">Accueil</router-link></li>
@@ -14,7 +16,8 @@
         <li><router-link to="/sorts">Sorts</router-link></li>
       </ul>
     </div>
-  </template>
+  </div>
+</template>
   
   <style scoped>
   .sommaire {

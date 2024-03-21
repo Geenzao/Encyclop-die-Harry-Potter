@@ -20,7 +20,7 @@ export default {
 
 <template>
     <div>
-        <h1>Sorts de l'univers "Harry Potter"</h1>
+        <h1>Livres de l'univers "Harry Potter"</h1>
         <infoLivre :livre="monLivre"></infoLivre>
     </div>
 </template>
