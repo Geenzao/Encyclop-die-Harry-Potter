@@ -33,11 +33,13 @@ export default {
 <style scoped>
     .popup {
         max-width: 300px;
-        max-height: 500px;
+        max-height: 800px;
         background-color: white;
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        /*aligner le popup a gauche*/
+        align-self: left;
     }
     .popup img {
         max-width: 100%;
