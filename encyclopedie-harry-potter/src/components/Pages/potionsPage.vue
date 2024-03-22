@@ -1,5 +1,6 @@
 <script>
 import infoPotion from '../InfoBulles/infoPotion.vue';
+const axios = require('axios');
 
 export default {
     components: {
@@ -7,19 +8,33 @@ export default {
     },
     data() {
         return {
-            maPotion: {
-                nomPotion: "Potion anti-chinois",
-                imagePotion: "https://media.bateaux.com/src//applications/showroom/images/images-produit/4bdc4f7ea254ef234efa78485e6c8e68.webp"
-            }
-        }
+            potions: [] // Initialisation du tableau livres
+        };
+    },
+    mounted() {
+        let stringRequeteInformation = "https://api.potterdb.com/v1/potions";
+        axios.get(stringRequeteInformation)
+            .then(responseFromAPI => {
+                for (let i = 0; i < responseFromAPI.data.data.length; i++) {
+                    this.potions.push({
+                        nomPotion: responseFromAPI.data.data[i].attributes.name,
+                        imagePotion: responseFromAPI.data.data[i].attributes.image
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la récupération des livres:", error);
+            });
     }
-}
+};
 </script>
 
 <template>
     <div>
         <h1>Potions Page</h1>
-        <infoPotion :potion="maPotion"></infoPotion>
+        <div v-for="potion in potions" :key="potion.nomPotion">
+            <infoPotion :potion="potion"></infoPotion>
+        </div>
     </div>
 </template>
 
