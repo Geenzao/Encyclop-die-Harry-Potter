@@ -1,15 +1,6 @@
 <script>
 import infoLivre from '../InfoBulles/infoLivre.vue';
-
-/*const axios = require('axios')
-var stringRequeteInformation = "https://api.potterdb.com/v1/books";
-axios({
-        method: 'get',
-        url: stringRequeteInformation,
-        responseType: 'json'
-    }).then(function (response) {
-        console.log(response.data)
-})*/
+const axios = require('axios');
 
 export default {
     components: {
@@ -17,21 +8,36 @@ export default {
     },
     data() {
         return {
-            monLivre: {
-                titre: 'Nickeur de quentin',
-                auteur: 'Fait 10 dégâts, si l adversaire est quetin, dégâts *= 1O^500K',
-                datePubli: 'Invoque la main de la daronne de quentin pour le gifler',
-                imageLivre: 'https://media.bateaux.com/src//applications/showroom/images/images-produit/4bdc4f7ea254ef234efa78485e6c8e68.webp'
-            }
-        }
+            livres: [] // Initialisation du tableau livres
+        };
+    },
+    mounted() {
+        let stringRequeteInformation = "https://api.potterdb.com/v1/books";
+        axios.get(stringRequeteInformation)
+            .then(responseFromAPI => {
+                for (let i = 0; i < responseFromAPI.data.data.length; i++) {
+                    this.livres.push({
+                        titre: responseFromAPI.data.data[i].attributes.title,
+                        auteur: responseFromAPI.data.data[i].attributes.author,
+                        datePubli: responseFromAPI.data.data[i].attributes.release_date,
+                        imageLivre: responseFromAPI.data.data[i].attributes.cover
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la récupération des livres:", error);
+            });
     }
-}
+};
 </script>
+
 
 <template>
     <div>
         <h1>Livres de l'univers "Harry Potter"</h1>
-        <infoLivre :livre="monLivre"></infoLivre>
+        <div v-for="livre in livres" :key="livre.titre">
+            <infoLivre :livre="livre"></infoLivre>
+        </div>
     </div>
 </template>
 
