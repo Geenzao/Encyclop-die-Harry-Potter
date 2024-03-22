@@ -1,5 +1,6 @@
 <script>
-import infoSort from '../InfoBulles/infoSort.vue'; // Importez votre composant SortInfo
+import infoSort from '../InfoBulles/infoSort.vue';
+const axios = require('axios');
 
 export default {
     components: {
@@ -7,21 +8,35 @@ export default {
     },
     data() {
         return {
-            monSort: {
-                nom: 'Nickeur de quentin',
-                effet: 'Fait 10 dégâts, si l adversaire est quetin, dégâts *= 1O^500K',
-                description: 'Invoque la main de la daronne de quentin pour le gifler',
-                imageSort: 'https://media.bateaux.com/src//applications/showroom/images/images-produit/4bdc4f7ea254ef234efa78485e6c8e68.webp'
-            }
-        }
+            sorts: [] // Initialisation du tableau livres
+        };
+    },
+    mounted() {
+        let stringRequeteInformation = "https://api.potterdb.com/v1/spells";
+        axios.get(stringRequeteInformation)
+            .then(responseFromAPI => {
+                for (let i = 0; i < responseFromAPI.data.data.length; i++) {
+                    this.sorts.push({
+                        nom: responseFromAPI.data.data[i].attributes.name,
+                        effet: responseFromAPI.data.data[i].attributes.effect,
+                        description: responseFromAPI.data.data[i].attributes.hand,
+                        imageSort: responseFromAPI.data.data[i].attributes.image
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la récupération des livres:", error);
+            });
     }
-}
+};
 </script>
 
 <template>
     <div>
         <h1>Sorts de l'univers "Harry Potter"</h1>
-        <infoSort :sort="monSort"></infoSort>
+        <div v-for="sort in sorts" :key="sort.nomSort">
+            <infoSort :sort="sort"></infoSort>
+        </div>
     </div>
 </template>
 

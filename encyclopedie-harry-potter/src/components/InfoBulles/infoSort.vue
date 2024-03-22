@@ -25,7 +25,7 @@ export default {
         </div>
         <br>
         <div>
-            <p class="description">Description:</p><p> {{sort.description}}</p>
+            <p class="description">Geste:</p><p> {{sort.description}}</p>
         </div>
     </div>
 </template>
