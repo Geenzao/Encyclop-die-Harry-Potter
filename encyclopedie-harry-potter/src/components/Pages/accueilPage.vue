@@ -40,4 +40,14 @@
         text-decoration: none;
         color: inherit; /* Utilisez la couleur par défaut */
     }
+
+    @media screen and (max-width: 768px){
+        .case-pages-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /*Mettre au centre les éléments*/
+            align-items: center;
+        }
+    }
 </style>

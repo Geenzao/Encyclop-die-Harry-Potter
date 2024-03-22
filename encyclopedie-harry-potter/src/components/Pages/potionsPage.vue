@@ -9,7 +9,6 @@ export default {
         return {
             maPotion: {
                 nomPotion: "Potion anti-chinois",
-                lienPotion: "Potion anti-chinois",
                 imagePotion: "https://media.bateaux.com/src//applications/showroom/images/images-produit/4bdc4f7ea254ef234efa78485e6c8e68.webp"
             }
         }

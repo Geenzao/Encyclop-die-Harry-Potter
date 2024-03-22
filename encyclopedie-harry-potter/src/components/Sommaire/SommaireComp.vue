@@ -26,10 +26,6 @@
     border: 1px solid #dee2e6;
   }
   
-  .sommaire h2 {
-    font-size: 1.2em;
-  }
-  
   .sommaire-list {
     display: flex; /* Utiliser la disposition flex */
     justify-content: space-between; /* Pour répartir les éléments uniformément sur la ligne */
@@ -50,6 +46,17 @@
   
   .sommaire li a:hover {
     text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px){
+    .sommaire-list {
+      display: flex; /* Utiliser la disposition flex */
+      justify-content: space-between; /* Pour répartir les éléments uniformément sur la ligne */
+      list-style-type: none;
+      padding: 0;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
   </style>
   

@@ -4,11 +4,13 @@ import personnagesPage from '../components/Pages/personnagesPage.vue'
 import potionsPage from '../components/Pages/potionsPage.vue'
 import sortsPage from '../components/Pages/sortsPage.vue'
 import accueilPage from '../components/Pages/accueilPage.vue'
+import onePotionPage from '../components/Pages/onePotionPage.vue'
 
 const routes = [
   { path: '/livres', component: livresPage},
   { path: '/personnages', component: personnagesPage },
   { path: '/potions', component: potionsPage },
+  { path: '/potions/:id', component: onePotionPage},
   { path: '/sorts', component: sortsPage },
   { path: '/', component: accueilPage },
 ]

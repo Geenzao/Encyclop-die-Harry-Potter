@@ -56,7 +56,7 @@ export default {
         font-style: italic;
         margin-bottom: 5px;
     }
-    .description {
+    .datePublication {
         font-size: 14px;
         color: #666;
     }

@@ -43,7 +43,7 @@
 
 @media screen and (max-width: 768px) {
   .main-content {
-    padding-top: 100px; /* ajustez la marge supérieure pour les écrans plus petits */
+    padding-top: 130px; /* ajustez la marge supérieure pour les écrans plus petits */
   }
 
   .sommaireVue {
