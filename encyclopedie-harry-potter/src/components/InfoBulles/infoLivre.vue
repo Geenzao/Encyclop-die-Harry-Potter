@@ -3,7 +3,7 @@ export default {
     props: {
         livre: {
             type: Object,
-            required: true
+            required:true
         }
     }
 }
