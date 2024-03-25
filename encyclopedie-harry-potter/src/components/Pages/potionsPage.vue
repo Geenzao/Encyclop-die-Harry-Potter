@@ -10,7 +10,8 @@ export default {
         return {
             potions: [], // Initialisation du tableau de potions
             currentPage: 1, // Page actuelle
-            potionsPerPage: 20 // Nombre de potions par page
+            potionsPerPage: 20, // Nombre de potions par page
+            searchQuery: '' // Chaîne de recherche
         };
     },
     mounted() {
@@ -33,13 +34,21 @@ export default {
         paginatePotions() {
             const startIndex = (this.currentPage - 1) * this.potionsPerPage;
             const endIndex = startIndex + this.potionsPerPage;
-            return this.potions.slice(startIndex, endIndex);
+            return this.filteredPotions.slice(startIndex, endIndex);
         },
         setPage(pageNumber) {
             this.currentPage = pageNumber;
         },
         totalPages() {
-            return Math.ceil(this.potions.length / this.potionsPerPage);
+            return Math.ceil(this.filteredPotions.length / this.potionsPerPage);
+        },
+        filterPotions() {
+            return this.potions.filter(potion => potion.nomPotion.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        }
+    },
+    computed: {
+        filteredPotions() {
+            return this.searchQuery ? this.filterPotions() : this.potions;
         }
     }
 };
@@ -48,6 +57,9 @@ export default {
 <template>
     <div>
         <h1>Potions Page</h1>
+        <div class="search-container">
+            <input type="text" v-model="searchQuery" placeholder="Recherche...">
+        </div>
         <div class="pagination">
             <button v-for="pageNumber in totalPages()" :key="pageNumber" @click="setPage(pageNumber)" class="page-button">
                 {{ pageNumber }}
@@ -115,5 +127,15 @@ export default {
     .page-button:hover {
         background-color: #0056b3;
     }
-</style>
 
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-container input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+    }
+</style>

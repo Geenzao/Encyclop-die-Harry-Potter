@@ -10,7 +10,8 @@ export default {
         return {
             sorts: [], // Initialisation du tableau de sorts
             currentPage: 1, // Page actuelle
-            sortsPerPage: 20 // Nombre de sorts par page
+            sortsPerPage: 20, // Nombre de sorts par page
+            searchQuery: '' // Chaîne de recherche
         };
     },
     mounted() {
@@ -35,13 +36,21 @@ export default {
         paginateSorts() {
             const startIndex = (this.currentPage - 1) * this.sortsPerPage;
             const endIndex = startIndex + this.sortsPerPage;
-            return this.sorts.slice(startIndex, endIndex);
+            return this.filteredSorts.slice(startIndex, endIndex);
         },
         setPage(pageNumber) {
             this.currentPage = pageNumber;
         },
         totalPages() {
-            return Math.ceil(this.sorts.length / this.sortsPerPage);
+            return Math.ceil(this.filteredSorts.length / this.sortsPerPage);
+        },
+        filterSorts() {
+            return this.sorts.filter(sort => sort.nom.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        }
+    },
+    computed: {
+        filteredSorts() {
+            return this.searchQuery ? this.filterSorts() : this.sorts;
         }
     }
 };
@@ -50,6 +59,9 @@ export default {
 <template>
     <div>
         <h1>Sorts de l'univers "Harry Potter"</h1>
+        <div class="search-container">
+            <input type="text" v-model="searchQuery" placeholder="Recherche...">
+        </div>
         <div class="pagination">
             <button v-for="pageNumber in totalPages()" :key="pageNumber" @click="setPage(pageNumber)" class="page-button">
                 {{ pageNumber }}
@@ -58,8 +70,8 @@ export default {
         <br>
         <div class="sorts-container">
             <div v-for="sort in paginateSorts()" :key="sort.nom" class="sort-item">
-            <infoSort :sort="sort"></infoSort>
-        </div>
+                <infoSort :sort="sort"></infoSort>
+            </div>
         </div>
         <div class="pagination">
             <button v-for="pageNumber in totalPages()" :key="pageNumber" @click="setPage(pageNumber)" class="page-button">
@@ -73,11 +85,11 @@ export default {
     .sorts-container {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start; /* Aligner les potions à gauche */
+        justify-content: flex-start; /* Aligner les sorts à gauche */
     }
 
     .sort-item {
-        width: calc(25% - 10px); /* Chaque potion occupe 25% de largeur avec un espace entre eux */
+        width: calc(25% - 10px); /* Chaque sort occupe 25% de largeur avec un espace entre eux */
         margin-bottom: 20px; /* Espace entre les lignes */
     }
 
@@ -87,13 +99,13 @@ export default {
         }
 
         .sort-item {
-            width: calc(50% - 10px); /* Sur les écrans plus petits, chaque potion occupe 50% de largeur */
+            width: calc(50% - 10px); /* Sur les écrans plus petits, chaque sort occupe 50% de largeur */
         }
     }
 
     @media screen and (max-width: 576px){
         .sort-item {
-            width: calc(100% - 10px); /* Sur les écrans très petits, chaque potion occupe 100% de largeur */
+            width: calc(100% - 10px); /* Sur les écrans très petits, chaque sort occupe 100% de largeur */
         }
     }
 
@@ -117,5 +129,15 @@ export default {
     .page-button:hover {
         background-color: #0056b3;
     }
-</style>
 
+    .search-container {
+        margin-bottom: 20px;
+    }
+
+    .search-container input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 300px;
+    }
+</style>
