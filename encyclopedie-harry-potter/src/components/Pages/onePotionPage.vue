@@ -42,22 +42,48 @@ export default {
 }
 </script>
 
-<template>
-    <div>
+<template><br>
+    <div class="potion-details">
         <h1>{{ potion.name }}</h1>
-        <div>
-            <img :src= "potion.image" alt="Image représentant la potion">
+        <div class="potion-image">
+            <img :src="potion.image" alt="Image représentant la potion">
         </div>
-        <p>Caractériques : {{potion.charac}}</p>
-        <p>Effet principal : {{potion.main}}</p>
-        <p>Effets secondaires : {{potion.side}}</p>
-        <p>Créateurs : {{potion.creator}}</p>
-        <p>Fabricants : {{potion.manufacterer}}</p>
-        <p>Difficulté : {{potion.difficulty}}</p>
-        <p>Ingrédients : {{potion.ingredients}}</p>
-        <p>Temps nécessaire : {{potion.time}}</p>
+        <div class="potion-info">
+            <p><strong>Caractéristiques :</strong> {{ potion.charac }}</p>
+            <p><strong>Effet principal :</strong> {{ potion.main }}</p>
+            <p><strong>Effets secondaires :</strong> {{ potion.side }}</p>
+            <p><strong>Créateurs :</strong> {{ potion.creator }}</p>
+            <p><strong>Fabricants :</strong> {{ potion.manufacterer }}</p>
+            <p><strong>Difficulté :</strong> {{ potion.difficulty }}</p>
+            <p><strong>Ingrédients :</strong> {{ potion.ingredients }}</p>
+            <p><strong>Temps nécessaire :</strong> {{ potion.time }}</p>
+        </div>
     </div>
 </template>
 
 <style scoped>
+.potion-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.potion-image img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.potion-info p {
+    margin-bottom: 10px;
+}
+
+.potion-info p strong {
+    font-weight: bold;
+}
+
 </style>
+

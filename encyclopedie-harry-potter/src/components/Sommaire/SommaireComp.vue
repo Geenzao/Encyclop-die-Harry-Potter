@@ -57,6 +57,9 @@
       margin-left: 10px;
       margin-right: 10px;
     }
+    h1 {
+      font-size: 1.5em;
+    }
   }
   </style>
   
