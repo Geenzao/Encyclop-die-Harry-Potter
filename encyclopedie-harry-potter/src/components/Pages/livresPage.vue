@@ -35,11 +35,42 @@ export default {
 <template>
     <div>
         <h1>Livres de l'univers "Harry Potter"</h1>
-        <div v-for="livre in livres" :key="livre.titre">
-            <infoLivre :livre="livre"></infoLivre>
+        <div class="livres-container">
+            <div v-for="livre in livres" :key="livre.titre" class="livre-item">
+                <infoLivre :livre="livre"></infoLivre>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+    .livres-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start; /* Aligner les livres à gauche */
+    }
+
+    .livre-item {
+        width: calc(25% - 10px); /* Chaque livre occupe 25% de largeur avec un espace entre eux */
+        margin-bottom: 20px; /* Espace entre les lignes */
+    }
+
+    @media screen and (max-width: 768px){
+        .livres-container {
+            justify-content: center; /* Centrer les éléments */
+        }
+
+        .livre-item {
+            width: calc(50% - 10px); /* Sur les écrans plus petits, chaque livre occupe 50% de largeur */
+        }
+    }
+
+    @media screen and (max-width: 576px){
+        .livre-item {
+            width: calc(100% - 10px); /* Sur les écrans très petits, chaque livre occupe 100% de largeur */
+        }
+    }
 </style>
+
+
+
