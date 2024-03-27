@@ -18,12 +18,13 @@ export default {
                 for (let i = 0; i < responseFromAPI.data.data.length; i++) {
                     this.potions.push({
                         nomPotion: responseFromAPI.data.data[i].attributes.name,
-                        imagePotion: responseFromAPI.data.data[i].attributes.image
+                        imagePotion: responseFromAPI.data.data[i].attributes.image,
+                        slug : responseFromAPI.data.data[i].attributes.slug
                     });
                 }
             })
             .catch(error => {
-                console.error("Erreur lors de la récupération des livres:", error);
+                console.error("Erreur lors de la récupération des potions:", error);
             });
     }
 };

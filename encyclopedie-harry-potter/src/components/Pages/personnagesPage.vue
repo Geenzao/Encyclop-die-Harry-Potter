@@ -15,7 +15,6 @@ export default {
         let stringRequeteInformation = "https://api.potterdb.com/v1/characters";
         axios.get(stringRequeteInformation)
             .then(responseFromAPI => {
-                console.log(responseFromAPI.data.data);
                 for (let i = 0; i < responseFromAPI.data.data.length; i++) {
                     this.personnages.push({
                         imagePersonnage : responseFromAPI.data.data[i].attributes.image,
