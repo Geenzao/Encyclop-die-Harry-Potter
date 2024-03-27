@@ -25,7 +25,7 @@ export default {
                     this.potions = responseFromAPI.data.data.map(potion => ({
                         nomPotion: potion.attributes.name,
                         imagePotion: potion.attributes.image,
-                        slug : responseFromAPI.data.data[i].attributes.slug
+                        slug : potion.attributes.slug
                     }));
                 })
                 .catch(error => {
