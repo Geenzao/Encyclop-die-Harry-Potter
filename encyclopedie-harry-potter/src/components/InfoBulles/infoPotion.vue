@@ -11,7 +11,7 @@ export default {
 
 <template>
     <!-- La div qui représente l'infobulle de la potion -->
-    <router-link :to="'/potions/' + potion.nomPotion" class="router-link">
+    <router-link :to="'/potions/' + potion.slug" class="router-link">
         <div class="popup">
             <!-- Image de la potion--> 
             <div>
